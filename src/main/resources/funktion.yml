@@ -1,0 +1,12 @@
+---
+flows:
+- steps:
+  - kind: endpoint
+    uri: periodic-timer:every?period=5000
+  - kind: endpoint
+    uri: http-get:http://simple-spring-boot/hello
+  - kind: log
+    message: 'Body: ${body}'
+    loggingLevel: INFO
+  - kind: endpoint
+    uri: http-post:http://simple-spring-boot-2/goodbye
